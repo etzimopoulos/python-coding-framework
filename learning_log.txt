@@ -1,0 +1,15 @@
+File used to keep track of my learning, including links I've used as I go along.
+
+Day 1 - 28/06/22
+- Created new local and repote repository in Git
+- Tested I can update local from remote and also push to remote by adding a README and doing minor updates
+
+Day 2 - 29/06/22
+- Installed Python3.9 in Ubuntu, upgrading from current 3.7.6
+- Used the following article as reference - https://www.itsupportwale.com/blog/how-to-upgrade-to-python-3-9-0-on-ubuntu-18-04-lts/
+- This creates 2 versions for Python interpreter
+- To learn more about how to use "update-alternatives" to select any of them by default or manually I read through this article: https://linuxhint.com/update_alternatives_ubuntu/
+- Next day: 
+1. To complete switching to 3.9 and configure update-alternatives properly
+2. To go through PyCharm installation in Linux (have it already in Windows but want to work of the Linux-VMBox)
+
