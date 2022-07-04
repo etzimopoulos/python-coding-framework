@@ -13,3 +13,51 @@ Day 2 - 29/06/22
 1. To complete switching to 3.9 and configure update-alternatives properly
 2. To go through PyCharm installation in Linux (have it already in Windows but want to work of the Linux-VMBox)
 
+Day 3 - 04/07/2022
+- Configured update-alternatives to use Python3 by default instead of Python 2. Article reference:
+https://linuxhint.com/update_alternatives_ubuntu/
+- Using "python --version" or "python3 -V" command still gives me 3.7.6 so something is not working right
+- Update-alteratives is setup as per article both for "python" or "python3":
+
+e.g. results when querying for python or python3
+
+(base) etzimopoulos@dell-ubuntu-vm:~/Google-Drive/Career/Data Science/GitHub/python-coding-framework$ update-alternatives --query python
+Name: python
+Link: /usr/local/bin/python
+Status: auto
+Best: /usr/bin/python3.9
+Value: /usr/bin/python3.9
+
+Alternative: /home/etzimopoulos/anaconda3/bin/python3
+Priority: 40
+
+Alternative: /usr/bin/python2
+Priority: 20
+
+Alternative: /usr/bin/python3.9
+Priority: 60
+
+(base) etzimopoulos@dell-ubuntu-vm:~/Google-Drive/Career/Data Science/GitHub/python-coding-framework$ update-alternatives --query python3
+Name: python3
+Link: /usr/local/bin/python3
+Status: auto
+Best: /usr/bin/python3.9
+Value: /usr/bin/python3.9
+
+Alternative: /usr/bin/python3.9
+Priority: 80
+
+****** Final solution ******
+In the end, a simple alias worked:
+Step 1 - Added the following to .bashrc 
+    alias python="python3.9"
+
+Step 2 - Restarted .bashrc
+source ~/.bashrc
+
+Worked. Now "python --version" gives me 3.9.13, while "python3 --version" gives me the default python 3.7.6
+
+Also, removed all the update alternatives for "python" or "python3"
+
+Sorted!
+
