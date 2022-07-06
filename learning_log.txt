@@ -1,10 +1,11 @@
+# Udemy Course: A Python project with coding framework and unit testing
 File used to keep track of my learning, including links I've used as I go along.
 
-Day 1 - 28/06/22
+*** Day 1 - 28/06/22 ***
 - Created new local and repote repository in Git
 - Tested I can update local from remote and also push to remote by adding a README and doing minor updates
 
-Day 2 - 29/06/22
+*** Day 2 - 29/06/22 *** 
 - Installed Python3.9 in Ubuntu, upgrading from current 3.7.6
 - Used the following article as reference - https://www.itsupportwale.com/blog/how-to-upgrade-to-python-3-9-0-on-ubuntu-18-04-lts/
 - This creates 2 versions for Python interpreter
@@ -13,7 +14,7 @@ Day 2 - 29/06/22
 1. To complete switching to 3.9 and configure update-alternatives properly
 2. To go through PyCharm installation in Linux (have it already in Windows but want to work of the Linux-VMBox)
 
-Day 3 - 04/07/2022
+*** Day 3 - 04/07/2022 *** 
 - Configured update-alternatives to use Python3 by default instead of Python 2. Article reference:
 https://linuxhint.com/update_alternatives_ubuntu/
 - Using "python --version" or "python3 -V" command still gives me 3.7.6 so something is not working right
@@ -47,7 +48,7 @@ Value: /usr/bin/python3.9
 Alternative: /usr/bin/python3.9
 Priority: 80
 
-****** Final solution ******
+----- Final solution -----
 In the end, a simple alias worked:
 Step 1 - Added the following to .bashrc 
     alias python="python3.9"
@@ -57,7 +58,22 @@ source ~/.bashrc
 
 Worked. Now "python --version" gives me 3.9.13, while "python3 --version" gives me the default python 3.7.6
 
-Also, removed all the update alternatives for "python" or "python3"
+Also:
+1. Removed all the update alternatives for "python" or "python3"
+2. Re-installed PyCharm in VM box and now is working.
+3. Created the First project and checked into Git
 
 Sorted!
+
+*** Day 4 - 06/07/2022 *** 
+Python Learning - going quickly through this chapter to make sure I don't miss anything
+
+- Dictionaries - when retrieving values that don't exist there are two ways to do that:
+1) my_dict['key_value_doesnt_exist'] - referencing that key will throw an error as there's no such key as 'key_value_doesnt_exist'
+2) alternatively can use get() function: my_dict.get('key_value_doesnt_exist') which will return "None" if value doesn't exist and program is not going to terminate with error. 
+
+Note "None" is considered as False in Python (for boolean statements)
+
+
+
 
