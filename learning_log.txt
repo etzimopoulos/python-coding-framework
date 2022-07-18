@@ -67,12 +67,20 @@ Sorted!
 
 *** Day 4 - 06/07/2022 *** 
 Python Learning - going quickly through this chapter to make sure I don't miss anything
-
+ 
 - Dictionaries - when retrieving values that don't exist there are two ways to do that:
 1) my_dict['key_value_doesnt_exist'] - referencing that key will throw an error as there's no such key as 'key_value_doesnt_exist'
 2) alternatively can use get() function: my_dict.get('key_value_doesnt_exist') which will return "None" if value doesn't exist and program is not going to terminate with error. 
 
 Note "None" is considered as False in Python (for boolean statements)
+
+
+
+*** Day 5  - 18/07/2022 ***
+Section 3: Organising code, logging and error handling
+10. Initializing variables with a constructor - completed this and run without issues
+Started documenting sequence diagram of interactions in slide deck (not completed)
+
 
 
 
