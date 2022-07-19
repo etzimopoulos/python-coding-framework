@@ -82,6 +82,7 @@ Section 3: Organising code, logging and error handling
 Started documenting sequence diagram of interactions in slide deck (not completed)
 
 
-
+*** Day 6 - 19/07/2022 ***
+Finished documentation on 3.9 and 3.10
 
 
