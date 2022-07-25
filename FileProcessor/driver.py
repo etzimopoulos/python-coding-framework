@@ -1,14 +1,17 @@
 import ingest
 import persist
+import logging
+import logging.config
 
 print("This is my driver program\n")
 
 class DriverProgram:
+    logging.config.fileConfig("resources/configs/logging.conf")
     def __init__(self,fileType):
-        print("I am within the constructor")
+        logging.debug("I am within the constructor")
         self.file_type = fileType
     def my_function(self):
-        print("Inside my_function. Initiating processing of a "+self.file_type+" file")
+        logging.debug("Inside my_function. Initiating processing of a "+self.file_type+" file")
         # Create Class instances
         reader = ingest.FileReader(self.file_type)
         writer = persist.PersistData("postgres")

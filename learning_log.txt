@@ -86,3 +86,7 @@ Started documenting sequence diagram of interactions in slide deck (not complete
 Finished documentation on 3.9 and 3.10
 
 
+*** Day 7 - 25/07/2022 ***
+Covered the whole of Logging sections 11, 12 & 13
+Updated documentation for 11, 12 and 13
+Completed Section 3
