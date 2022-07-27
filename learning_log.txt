@@ -89,4 +89,81 @@ Finished documentation on 3.9 and 3.10
 *** Day 7 - 25/07/2022 ***
 Covered the whole of Logging sections 11, 12 & 13
 Updated documentation for 11, 12 and 13
-Completed Section 3
+Completed Section 3 (including adding error handling try/except blocks)
+
+*** Day 8 - 27/07/2022 ***
+Section 15 - Completed by adding fileprocessor.ini with relevant table config (not real DB tables yet)
+Section 16 - PostgreSQL already added in my system, checked using SQL Shell (psql) command line. 
+I was also able to find the table 'futurexschema' created from last time I did the course with futurex_course_catalog table within it : select * from futurexschema.futurex_course_catalog;
+Now I'll have to create one new like 'futurex2schema' or something keep the same schema and add a futurex_course_catalog_2 table that so I can repeat it properly
+
+Created new table within the existing scheme with a 2 index in the end:
+
+CREATE TABLE futurexschema.futurex_course_catalog2
+(
+course_id integer NOT NULL,
+course_name character varying COLLATE pg_catalog."default" NOT NULL,
+author_name character varying COLLATE pg_catalog."default" NOT NULL,
+course_section json NOT NULL,
+creation_date date NOT NULL,
+CONSTRAINT futurex_course_catalog2_pkey PRIMARY KEY (course_id)
+);
+
+
+Inserting rows
+INSERT INTO futurexschema.futurex_course_catalog2(
+course_id, course_name, author_name, course_section, creation_date)
+VALUES(2, 'Hadoop Spark', 'FutureXskill', '{"section": 1, "title":"Hadoop"}', '2020-01-13');
+
+
+INSERT INTO futurexschema.futurex_course_catalog2(
+course_id, course_name, author_name, course_section, creation_date)
+VALUES(1, 'Spring Boot MicroServices', 'FutureXskill', '{"section": 1, "title":"MicroServices"}', '2020-02-20');
+
+
+Section 17
+Import library in python to interact with PostgreSQL: psycopg2
+If working with this library for the FIRST TIME, you need to include that in the Python environment
+
+*********** RUN into ERROR when installing phycopg2 library *********** 
+
+ERROR log:
+
+ERROR: Command errored out with exit status 1:
+     command: /home/etzimopoulos/anaconda3/bin/python -c 'import sys, setuptools, tokenize; sys.argv[0] = '"'"'/tmp/pip-install-wo8jwdq4/psycopg2/setup.py'"'"'; __file__='"'"'/tmp/pip-install-wo8jwdq4/psycopg2/setup.py'"'"';f=getattr(tokenize, '"'"'open'"'"', open)(__file__);code=f.read().replace('"'"'\r\n'"'"', '"'"'\n'"'"');f.close();exec(compile(code, __file__, '"'"'exec'"'"'))' egg_info --egg-base /tmp/pip-pip-egg-info-l8r4ie4q
+         cwd: /tmp/pip-install-wo8jwdq4/psycopg2/
+    Complete output (23 lines):
+    running egg_info
+    creating /tmp/pip-pip-egg-info-l8r4ie4q/psycopg2.egg-info
+    writing /tmp/pip-pip-egg-info-l8r4ie4q/psycopg2.egg-info/PKG-INFO
+    writing dependency_links to /tmp/pip-pip-egg-info-l8r4ie4q/psycopg2.egg-info/dependency_links.txt
+    writing top-level names to /tmp/pip-pip-egg-info-l8r4ie4q/psycopg2.egg-info/top_level.txt
+    writing manifest file '/tmp/pip-pip-egg-info-l8r4ie4q/psycopg2.egg-info/SOURCES.txt'
+    
+    Error: pg_config executable not found.
+    
+    pg_config is required to build psycopg2 from source.  Please add the directory
+    containing pg_config to the $PATH or specify the full executable path with the
+    option:
+    
+        python setup.py build_ext --pg-config /path/to/pg_config build ...
+    
+    or with the pg_config option in 'setup.cfg'.
+    
+    If you prefer to avoid building psycopg2 from source, please install the PyPI
+    'psycopg2-binary' package instead.
+    
+    For further information please check the 'doc/src/install.rst' file (also at
+    <https://www.psycopg.org/docs/install.html>).
+
+
+******************  Problem SOLVED *********************************************
+- Looked up following thread on StackOverflow:
+https://stackoverflow.com/questions/11618898/pg-config-executable-not-found
+
+
+"pg_config" was missing, but this can be installed usingt the following command:
+
+sudo apt-get install libpq-dev
+
+Then it works fine.
