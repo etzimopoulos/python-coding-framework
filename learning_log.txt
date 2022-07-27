@@ -166,4 +166,58 @@ https://stackoverflow.com/questions/11618898/pg-config-executable-not-found
 
 sudo apt-get install libpq-dev
 
-Then it works fine.
+This works fine when installed in command line. i.e. running libpq-dev and then psycopg2 works
+sudo apt-get install libpq-dev
+sudo apt-get install psycopg2
+
+But when I try to do that through the PyCharm Python Interpreter option (File-->Settings-->Python Interpreter) it cannot install it.
+
+If I open the terminal within PyCharm and try to install both I get the following:
+
+
+sudo apt-get install libpq-dev
+
+[sudo] password for etzimopoulos: 
+Reading package lists... Done
+Building dependency tree       
+Reading state information... Done
+libpq-dev is already the newest version (10.21-0ubuntu0.18.04.1).
+0 to upgrade, 0 to newly install, 0 to remove and 1 not to upgrade.
+
+sudo apt-get install psycopg2
+Reading package lists... Done
+Building dependency tree       
+Reading state information... Done
+E: Unable to locate package psycopg2
+
+Then back onto installing in PyCharm:
+
+Installing libqp-dev error:
+
+
+
+Error: Traceback (most recent call last):
+  File "/snap/pycharm-community/286/plugins/python-ce/helpers/packaging_tool.py", line 73, in run_pip
+    runpy.run_module(module_name, run_name='__main__', alter_sys=True)
+  File "/usr/lib/python3.9/runpy.py", line 221, in run_module
+    mod_name, mod_spec, code = _get_module_details(mod_name)
+  File "/usr/lib/python3.9/runpy.py", line 147, in _get_module_details
+    return _get_module_details(pkg_main_name, error)
+  File "/usr/lib/python3.9/runpy.py", line 111, in _get_module_details
+    __import__(pkg_name)
+  File "/usr/lib/python3/dist-packages/pip/__init__.py", line 29, in <module>
+    from pip.utils import get_installed_distributions, get_prog
+  File "/usr/lib/python3/dist-packages/pip/utils/__init__.py", line 23, in <module>
+    from pip.locations import (
+  File "/usr/lib/python3/dist-packages/pip/locations.py", line 9, in <module>
+    from distutils import sysconfig
+ImportError: cannot import name 'sysconfig' from 'distutils' (/usr/lib/python3.9/distutils/__init__.py)
+
+
+Tasks for next time: try instructions here. Probably an interpreter environment issue in Pycharm.
+https://www.jetbrains.com/help/pycharm/package-installation-issues.html#terminal
+
+
+
+
+
