@@ -217,6 +217,45 @@ ImportError: cannot import name 'sysconfig' from 'distutils' (/usr/lib/python3.9
 Tasks for next time: try instructions here. Probably an interpreter environment issue in Pycharm.
 https://www.jetbrains.com/help/pycharm/package-installation-issues.html#terminal
 
+*** Day 9 - 23/08/2022 ***
+Still trying to debug this issue with installing psycopg2 in PyCharm.
+
+Tried the following in my terminal outside Pycharm:
+
+1) Installed libpq-dev succesfully
+sudo apt-get install libpq-dev
+[sudo] password for etzimopoulos: 
+Reading package lists... Done
+Building dependency tree       
+Reading state information... Done
+libpq-dev is already the newest version (10.22-0ubuntu0.18.04.1).
+The following package was automatically installed and is no longer required:
+  linux-hwe-5.4-headers-5.4.0-121
+Use 'sudo apt autoremove' to remove it.
+0 to upgrade, 0 to newly install, 0 to remove and 0 not to upgrade.
+
+2) Tried installing psycopg2 using "apt-get install psycopg2": not successful: can't find package!
+(base) etzimopoulos@dell-ubuntu-vm:~/Google-Drive/Career/Data Science/GitHub/python-coding-framework$ sudo apt-get install psycopg2
+Reading package lists... Done
+Building dependency tree       
+Reading state information... Done
+E: Unable to locate package psycopg2
+
+3) Tried pip installing psycopg2 - says it's already there!
+(base) etzimopoulos@dell-ubuntu-vm:~/Google-Drive/Career/Data Science/GitHub/python-coding-framework$ pip install psycopg2
+Requirement already satisfied: psycopg2 in /home/etzimopoulos/anaconda3/lib/python3.7/site-packages (2.9.3)
+
+Really really buffled. Probably has to do with the local environments vs versions installed. Looking back at Day 2, I installed Python 3.9 switching over from 3.7.2 so maybe something is still missing there and I'm still pointed to 3.7.2.
+
+Also checked the Anaconda directory above and looks like that as part of another NLP course I learned how to configure environments properly (to follow that course). Here's the path for that environment:
+/home/etzimopoulos/anaconda3/envs
+
+
+To do next:
+- Go back to steps done at day 2/3
+- View course video about installation of Python see if I did any mistakes
+- View NLP course video about setting up an environment see if I can use any good tips from there. 
+- Also when reading the notes from steps at day 2/3 I noticed that there were some more issues which I probably didn't solve with the alias pointing at 3.9 rather than put them under the carpet. :)
 
 
 
