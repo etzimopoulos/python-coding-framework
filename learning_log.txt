@@ -1,11 +1,11 @@
 # Udemy Course: A Python project with coding framework and unit testing
 File used to keep track of my learning, including links I've used as I go along.
 
-*** Day 1 - 28/06/22 ***
+*** Day 1 - 28/06/22 ****************************************************************************************
 - Created new local and repote repository in Git
 - Tested I can update local from remote and also push to remote by adding a README and doing minor updates
 
-*** Day 2 - 29/06/22 *** 
+*** Day 2 - 29/06/22 ****************************************************************************************
 - Installed Python3.9 in Ubuntu, upgrading from current 3.7.6
 - Used the following article as reference - https://www.itsupportwale.com/blog/how-to-upgrade-to-python-3-9-0-on-ubuntu-18-04-lts/
 - This creates 2 versions for Python interpreter
@@ -14,7 +14,7 @@ File used to keep track of my learning, including links I've used as I go along.
 1. To complete switching to 3.9 and configure update-alternatives properly
 2. To go through PyCharm installation in Linux (have it already in Windows but want to work of the Linux-VMBox)
 
-*** Day 3 - 04/07/2022 *** 
+*** Day 3 - 04/07/2022 ************************************************************************************** 
 - Configured update-alternatives to use Python3 by default instead of Python 2. Article reference:
 https://linuxhint.com/update_alternatives_ubuntu/
 - Using "python --version" or "python3 -V" command still gives me 3.7.6 so something is not working right
@@ -65,7 +65,7 @@ Also:
 
 Sorted!
 
-*** Day 4 - 06/07/2022 *** 
+*** Day 4 - 06/07/2022 **************************************************************************************** 
 Python Learning - going quickly through this chapter to make sure I don't miss anything
  
 - Dictionaries - when retrieving values that don't exist there are two ways to do that:
@@ -76,17 +76,17 @@ Note "None" is considered as False in Python (for boolean statements)
 
 
 
-*** Day 5  - 18/07/2022 ***
+*** Day 5  - 18/07/2022 ****************************************************************************************
 Section 3: Organising code, logging and error handling
 10. Initializing variables with a constructor - completed this and run without issues
 Started documenting sequence diagram of interactions in slide deck (not completed)
 
 
-*** Day 6 - 19/07/2022 ***
+*** Day 6 - 19/07/2022 ****************************************************************************************
 Finished documentation on 3.9 and 3.10
 
 
-*** Day 7 - 25/07/2022 ***
+*** Day 7 - 25/07/2022 ****************************************************************************************
 Covered the whole of Logging sections 11, 12 & 13
 Updated documentation for 11, 12 and 13
 Completed Section 3 (including adding error handling try/except blocks)
@@ -157,20 +157,18 @@ ERROR: Command errored out with exit status 1:
     <https://www.psycopg.org/docs/install.html>).
 
 
-******************  Problem SOLVED *********************************************
+******************  Problem SOLVED ****************
 - Looked up following thread on StackOverflow:
 https://stackoverflow.com/questions/11618898/pg-config-executable-not-found
 
 
 "pg_config" was missing, but this can be installed usingt the following command:
 
-sudo apt-get install libpq-dev
+"sudo apt-get install libpq-dev" - This works fine when installed in command line. i.e. running libpq-dev works
 
-This works fine when installed in command line. i.e. running libpq-dev and then psycopg2 works
-sudo apt-get install libpq-dev
-sudo apt-get install psycopg2
+When I try to install psycopg2 "sudo apt-get install psycopg2" it says "E: Unable to locate package psycopg2"
 
-But when I try to do that through the PyCharm Python Interpreter option (File-->Settings-->Python Interpreter) it cannot install it.
+Also, when I try to do that through the PyCharm Python Interpreter option (File-->Settings-->Python Interpreter) it cannot install it.
 
 If I open the terminal within PyCharm and try to install both I get the following:
 
@@ -217,7 +215,7 @@ ImportError: cannot import name 'sysconfig' from 'distutils' (/usr/lib/python3.9
 Tasks for next time: try instructions here. Probably an interpreter environment issue in Pycharm.
 https://www.jetbrains.com/help/pycharm/package-installation-issues.html#terminal
 
-*** Day 9 - 23/08/2022 ***
+*** Day 9 - 23/08/2022 ****************************************************************************************
 Still trying to debug this issue with installing psycopg2 in PyCharm.
 
 Tried the following in my terminal outside Pycharm:
@@ -257,6 +255,75 @@ To do next:
 - View NLP course video about setting up an environment see if I can use any good tips from there. 
 - Also when reading the notes from steps at day 2/3 I noticed that there were some more issues which I probably didn't solve with the alias pointing at 3.9 rather than put them under the carpet. :)
 
+
+*** Day 10 - 05/09/2022 ****************************************************************************************
+Back and investigating Python versions vs environment
+
+1. Some initial tests:
+Running "update-alternatives --query python" both in Ubuntu or Pycharm command line gives me:
+"update-alternatives: error: no alternatives for python"
+
+2. Also, updated alias in command line to point to new version of python
+
+a simple alias worked:
+Step 1 - Updated the following to .bashrc 
+from: alias python="python3.9"    
+to  : alias python3="python3.9"
+
+Step 2 - Restarted .bashrc
+source ~/.bashrc
+
+Now both "python" or "python3" point to Python 3.9.13
+
+3. Removed all the aliases of python3 or python so we're back to normal:
+
+(base) etzimopoulos@dell-ubuntu-vm:~$ python --version
+Python 3.7.6
+(base) etzimopoulos@dell-ubuntu-vm:~$ python3 --version
+Python 3.7.6
+
+
+4. Looking deeper at all python versions in my system using this thread; https://askubuntu.com/questions/505081/what-version-of-python-do-i-have
+
+By running this super command finds all the python binaries (assuming it's always going to be called python<something>:
+"sudo find / -type f -executable -iname 'python*' -exec file -i '{}' \; | awk -F: '/x-executable; charset=binary/ {print $1}' | xargs readlink -f | sort -u | xargs -I % sh -c 'echo -n "%: "; % -V'"
+
+Results for my system:
+
+/snap/core/13308/usr/bin/python3.5: Python 3.5.2
+/snap/core/13308/usr/bin/python3.5m: Python 3.5.2
+/snap/core/13425/usr/bin/python3.5: Python 3.5.2
+/snap/core/13425/usr/bin/python3.5m: Python 3.5.2
+/snap/core18/2409/usr/bin/python3.6: Python 3.6.9
+/snap/core18/2409/usr/bin/python3.6m: Python 3.6.9
+/snap/core18/2538/usr/bin/python3.6: Python 3.6.9
+/snap/core18/2538/usr/bin/python3.6m: Python 3.6.9
+/snap/core20/1581/usr/bin/python3.8: /snap/core20/1581/usr/bin/python3.8: /lib/x86_64-linux-gnu/libm.so.6: version `GLIBC_2.29' not found (required by /snap/core20/1581/usr/bin/python3.8)
+/snap/core20/1581/usr/bin/python3.8: /lib/x86_64-linux-gnu/libc.so.6: version `GLIBC_2.28' not found (required by /snap/core20/1581/usr/bin/python3.8)
+/snap/core20/1611/usr/bin/python3.8: /snap/core20/1611/usr/bin/python3.8: /lib/x86_64-linux-gnu/libm.so.6: version `GLIBC_2.29' not found (required by /snap/core20/1611/usr/bin/python3.8)
+/snap/core20/1611/usr/bin/python3.8: /lib/x86_64-linux-gnu/libc.so.6: version `GLIBC_2.28' not found (required by /snap/core20/1611/usr/bin/python3.8)
+/snap/gnome-3-28-1804/145/usr/bin/python3.6: Python 3.6.9
+/snap/gnome-3-28-1804/145/usr/bin/python3.6m: Python 3.6.9
+/snap/gnome-3-28-1804/161/usr/bin/python3.6: Python 3.6.9
+/snap/gnome-3-34-1804/66/usr/bin/python3.6: Python 3.6.9
+/snap/gnome-3-34-1804/66/usr/bin/python3.6m: Python 3.6.9
+/snap/gnome-3-34-1804/77/usr/bin/python3.6: Python 3.6.9
+/snap/gnome-3-34-1804/77/usr/bin/python3.6m: Python 3.6.9
+/usr/bin/python3.6: Python 3.6.9
+/usr/bin/python3.6m: Python 3.6.9
+/usr/bin/python3.9: Python 3.9.13
+
+
+Odd that it doesn't pick up 3.7.6!
+
+Next Steps:
+- Try anaconda side of things:
+
+In the past I tried pip installing psycopg2 - says it's already there!
+(base) etzimopoulos@dell-ubuntu-vm:~/Google-Drive/Career/Data Science/GitHub/python-coding-framework$ pip install psycopg2
+Requirement already satisfied: psycopg2 in /home/etzimopoulos/anaconda3/lib/python3.7/site-packages (2.9.3)
+
+- Watch the NLP udemy course setup for how to update/install ananconda virtual environment
 
 
 
